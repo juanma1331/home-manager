@@ -5,7 +5,7 @@
     <ul class="menu-list">
         {% for category in categories %}
             <li>
-                <a href="{{ path('inventory.category.show', {slug: category.slug}) }}" class="is-flex is-justify-content-space-between">
+                <a href="{{ path('inventory.category.index', {slug: category.slug}) }}" class="is-flex is-justify-content-space-between">
                     {{ category.name }}
                     <span class="tag is-dark">
                         {{ category.getProductsCount() }}
