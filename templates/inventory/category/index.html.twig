@@ -1,0 +1,20 @@
+{% extends "inventory/base_inventory.html.twig" %}
+
+ {% block inventory_content %}
+     <h1>Category {{ category.name }} Details</h1>
+
+     {% if category.getProductsCount() > 0 %}
+         <div>
+             <ul>
+                 {% for product in category.getProducts() %}
+                     <li>{{ product.name }}</li>
+                 {% endfor %}
+             </ul>
+         </div>
+     {% else %}
+         <div>
+             <p>No Products for this Category</p>
+         </div>
+     {% endif %}
+
+ {% endblock inventory_content %}
