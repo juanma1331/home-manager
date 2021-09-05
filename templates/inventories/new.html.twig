@@ -1,0 +1,18 @@
+{% extends "inventories/base_inventories.html.twig" %}
+
+{% block inventories_content %}
+
+    {{ form_start(form) }}
+        <div class="field">
+            {{form_label(form.name, 'Name' ,{'attr': {'class': 'label'}})}}
+
+            <div class="control">
+                {{ form_widget(form.name, {'attr': {'class' : 'input'}}) }}
+            </div>
+        </div>
+
+        <input class="button is-primary" type="submit" value="Create">
+
+    {{ form_end(form) }}
+
+{% endblock inventories_content %}
