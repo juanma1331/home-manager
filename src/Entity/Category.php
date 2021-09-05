@@ -4,11 +4,10 @@ namespace App\Entity;
 
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\UuidTrait;
-use App\Repository\CategoryRepository;
+use App\Repository\SubcategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -20,9 +19,9 @@ class Category
     use NameTrait;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
      */
-    private Collection $products;
+    private $products;
 
     public function __construct()
     {
@@ -30,7 +29,7 @@ class Category
     }
 
     /**
-     * @return Collection
+     * @return Collection|Product[]
      */
     public function getProducts(): Collection
     {
@@ -58,10 +57,4 @@ class Category
 
         return $this;
     }
-
-    public function getProductsCount(): int
-    {
-        return count($this->products);
-    }
-
 }

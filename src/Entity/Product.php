@@ -17,15 +17,27 @@ class Product
     use NameTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Inventory::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
-    private Category $category;
+    private $inventory;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Subcategory::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      */
-    private Subcategory $subcategory;
+    private $category;
+
+    public function getInventory(): ?Inventory
+    {
+        return $this->inventory;
+    }
+
+    public function setInventory(?Inventory $inventory): self
+    {
+        $this->inventory = $inventory;
+
+        return $this;
+    }
 
     public function getCategory(): ?Category
     {
@@ -35,18 +47,6 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getSubcategory(): ?Subcategory
-    {
-        return $this->subcategory;
-    }
-
-    public function setSubcategory(?Subcategory $subcategory): self
-    {
-        $this->subcategory = $subcategory;
 
         return $this;
     }

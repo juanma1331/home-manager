@@ -4,7 +4,7 @@ namespace App\EventListener;
 
 use App\Entity\Category;
 use App\Entity\Product;
-use App\Entity\Subcategory;
+use App\Entity\Inventory;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -23,7 +23,7 @@ class SlugListener
 
         if ($entity instanceof Category ||
             $entity instanceof Product ||
-            $entity instanceof Subcategory) {
+            $entity instanceof Inventory) {
             $slug = strtolower($this->slugger->slug($entity->getName()));
             $entity->setSlug($slug);
         }
@@ -35,7 +35,7 @@ class SlugListener
 
         if ($entity instanceof Category ||
             $entity instanceof Product ||
-            $entity instanceof Subcategory) {
+            $entity instanceof Inventory) {
             $slug = strtolower($this->slugger->slug($entity->getName()));
             $entity->setSlug($slug);
         }

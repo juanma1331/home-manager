@@ -1,0 +1,6 @@
+App\Entity\Inventory:
+  inventory_1:
+    name: "Food"
+
+  inventory_2:
+    name: "Cleaning"

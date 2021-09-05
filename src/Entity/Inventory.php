@@ -4,24 +4,25 @@ namespace App\Entity;
 
 use App\Entity\Traits\NameTrait;
 use App\Entity\Traits\UuidTrait;
-use App\Repository\SubcategoryRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity(repositoryClass=SubcategoryRepository::class)
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
-class Subcategory
+class Inventory
 {
     use UuidTrait;
 
     use NameTrait;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="subcategory", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="inventory", orphanRemoval=true)
      */
-    private Collection $products;
+    private $products;
 
     public function __construct()
     {
@@ -29,7 +30,7 @@ class Subcategory
     }
 
     /**
-     * @return Collection
+     * @return Collection|Product[]
      */
     public function getProducts(): Collection
     {
@@ -40,7 +41,7 @@ class Subcategory
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setSubcategory($this);
+            $product->setInventory($this);
         }
 
         return $this;
@@ -50,11 +51,12 @@ class Subcategory
     {
         if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($product->getSubcategory() === $this) {
-                $product->setSubcategory(null);
+            if ($product->getInventory() === $this) {
+                $product->setInventory(null);
             }
         }
 
         return $this;
     }
+
 }
