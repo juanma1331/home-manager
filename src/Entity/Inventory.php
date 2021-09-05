@@ -59,4 +59,9 @@ class Inventory
         return $this;
     }
 
+    public function getProductsCount(): int
+    {
+        return count($this->getProducts());
+    }
+
 }

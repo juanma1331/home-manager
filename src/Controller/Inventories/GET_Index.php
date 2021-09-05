@@ -1,16 +1,15 @@
 <?php
-
-namespace App\Controller\Inventory;
+namespace App\Controller\Inventories;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/inventory', name: 'inventory', methods: ['GET'])]
-class GET_IndexInventory extends AbstractController
+#[Route('/inventories', name: 'inventories', methods: ['GET'])]
+class GET_Index extends AbstractController
 {
     public function __invoke(): Response
     {
-        return $this->render('inventory/index.html.twig');
+        return $this->render('inventories/index.html.twig');
     }
 }

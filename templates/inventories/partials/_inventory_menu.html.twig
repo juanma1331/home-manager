@@ -1,0 +1,17 @@
+<aside class="menu">
+    <p class="menu-label">
+        Categories
+    </p>
+    <ul class="menu-list">
+        {% for inventory in inventories %}
+            <li>
+                <a href="{{ path('inventories.details', {slug: inventory.slug}) }}" class="is-flex is-justify-content-space-between">
+                    {{ inventory.name }}
+                    <span class="tag is-dark">
+                        {{ inventory.getProductsCount() }}
+                    </span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</aside>
