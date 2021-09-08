@@ -1,0 +1,10 @@
+ {% extends 'inventories/base_inventories.html.twig' %}
+
+ {% block inventories_content %}
+     <h1>Inventory: {{ inventory.name }}</h1>
+
+     {% include 'inventories/products/partials/_form.html.twig' with {
+         submitText: 'Add',
+         action: path('inventories.products.addProduct', {slug: inventory.slug})
+     } %}
+ {% endblock inventories_content %}

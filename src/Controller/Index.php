@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GET_Index extends AbstractController
+class Index extends AbstractController
 {
-    #[Route('/', name: 'index')]
+    #[Route('/', name: 'index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('index.html.twig', [

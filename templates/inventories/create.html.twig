@@ -1,0 +1,10 @@
+{% extends "inventories/base_inventories.html.twig" %}
+
+{% block inventories_content %}
+
+    {% include "inventories/partials/_form.html.twig" with {
+        submitText: 'Create',
+        action: path('inventories.create')
+    } %}
+
+{% endblock inventories_content %}

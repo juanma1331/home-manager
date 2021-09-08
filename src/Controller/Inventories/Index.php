@@ -5,11 +5,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/inventories/details/{slug}', name: 'inventories.details', methods: ['GET'])]
-class GET_Details extends AbstractController
+#[Route('/inventories', name: 'inventories', methods: ['GET'])]
+class Index extends AbstractController
 {
     public function __invoke(): Response
     {
-        return $this->render('inventories/details.html.twig');
+        return $this->render('inventories/index.html.twig');
     }
 }

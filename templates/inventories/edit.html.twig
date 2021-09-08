@@ -1,0 +1,8 @@
+{% extends "inventories/base_inventories.html.twig" %}
+
+{% block inventories_content %}
+    {% include "inventories/partials/_form.html.twig" with {
+        submitText: 'Save',
+        action: path('inventories.edit', {'slug': inventory.slug}),
+    } %}
+{% endblock inventories_content %}

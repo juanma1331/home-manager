@@ -1,0 +1,15 @@
+{{ form_start(form, {'action': action}) }}
+<div class="field">
+    {{ form_label(form.name, 'Name' ,{'attr': {'class': 'label'}}) }}
+
+    <div class="control">
+        {{ form_widget(form.name, {'attr': {'class' : 'input'}}) }}
+    </div>
+
+    {{ form_errors(form.name) }}
+</div>
+
+<input class="button is-primary" type="submit" value="{{ submitText }}">
+
+{{ form_end(form) }}
+
